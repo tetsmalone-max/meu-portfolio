@@ -2,3 +2,46 @@ calculadora-custos/
 │
 ├── calculadora.py
 └── README.md
+# calculadora.py
+
+def adicionar_custo(lista_custos):
+    descricao = input("Descrição do gasto: ")
+    valor = float(input("Valor do gasto: R$ "))
+    lista_custos.append((descricao, valor))
+    print("Gasto adicionado com sucesso!\n")
+
+
+def mostrar_custos(lista_custos):
+    if not lista_custos:
+        print("Nenhum gasto registrado.\n")
+        return
+    total = 0
+    print("\n--- Lista de Gastos ---")
+    for i, (desc, val) in enumerate(lista_custos, start=1):
+        print(f"{i}. {desc} - R$ {val:.2f}")
+        total += val
+    print(f"Total: R$ {total:.2f}\n")
+
+
+def menu():
+    lista_custos = []
+    while True:
+        print("1 - Adicionar Gasto")
+        print("2 - Mostrar Gastos")
+        print("3 - Sair")
+        opcao = input("Escolha uma opção: ")
+        
+        if opcao == "1":
+            adicionar_custo(lista_custos)
+        elif opcao == "2":
+            mostrar_custos(lista_custos)
+        elif opcao == "3":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida. Tente novamente.\n")
+
+
+if __name__ == "__main__":
+    menu()
+
